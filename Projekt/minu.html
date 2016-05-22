@@ -1,1 +1,21 @@
-﻿<p>Minu<p>
+<div>
+  <div id="text">
+    <form action="?page=minu" method="POST">
+      <p>Sisesta oma tekst siia...<p><br>
+        <textarea name="sisendtext" placeholder="Sisesta oma tekst siia..." id="sisendtext"></textarea>
+      <input type="submit" value="Saada"/>
+    </form>
+  </div>
+  <div id="vastus">
+<?php
+  foorum();
+?>
+<?php if(isset($_SESSION["vastus"])):?>
+  <?php $tekst = $_SESSION["vastus"];?>
+  <?php $pikkus= count($tekst);?>
+  <?php for($i=0; $i <$pikkus ; $i++):?>
+    <div style="color:red;"><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></div><br/>
+    <?php endfor;?>
+  <?php endif;?>
+  </div>
+</div>

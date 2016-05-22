@@ -1,6 +1,6 @@
 
 <div id="log">
-    <form method="post" action="logi.html">
+    <form method="post" action="main.php">
     <table border="1">
       <caption>Sisselogimine</caption>
       <tr>
@@ -23,20 +23,28 @@
 </form>
 </div>
 <div id="reg">
-      <form method="post" action="logi.html">
+      <form method="post" action="main.php">
       <table border="1">
-        <caption>Registreerine</caption>
+        <caption>Registreerimine</caption>
         <tr>
           <th><label for="reguser-id">Kasutajanimi</label></th>
-          <td><input type="text" name="regusername" id="reguser-id"placeholder="Kasutajanimi" size="20"></td>
+          <td><input type="text" name="regusername" id="reguser-id"placeholder="Kasutajanimi" size="20" value = "<?php if(isset($_POST["regusername"])){echo htmlspecialchars($_POST["regusername"]);}?>"></td>
+        </tr>
+        <tr>
+          <th><label for="name-id">Nimi</label></th>
+          <td><input type="text" name="name" id="name-id"placeholder="Nimi" size="20" value = "<?php if(isset($_POST["name"])){echo htmlspecialchars($_POST["name"]);}?>"></td>
+        </tr>
+        <tr>
+          <th><label for="email-id">E-mail</label></th>
+          <td><input type="email" name="email" id="email-id"placeholder="MingiMingi@email.com" size="20" value = "<?php if(isset($_POST["email"])){echo htmlspecialchars($_POST["email"]);}?>"></td>
         </tr>
         <tr>
           <th><label for="regpass-id">Parool</label></th>
-          <td><input type="password" name="regpassword" id="regpass-id" placeholder="Parool" size="20"></td>
+          <td><input type="password" name="regpassword" id="regpass-id" placeholder="Parool" size="20" value = "<?php if(isset($_POST["regpassword"])){echo htmlspecialchars($_POST["regpassword"]);}?>"></td>
         </tr>
         <tr>
           <th><label for="regpass-id">Korda parooli</label></th>
-          <td><input type="password" name="regpassword" id="regpass-id" placeholder="Parool uuesti" size="20"></td>
+          <td><input type="password" name="regpassword2" id="regpass-id" placeholder="Parool uuesti" size="20" value = "<?php if(isset($_POST["regpassword2"])){echo htmlspecialchars($_POST["regpassword2"]);}?>"></td>
         </tr>
         <tr>
         </tr>
