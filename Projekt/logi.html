@@ -56,4 +56,10 @@
         </tr>
     </table>
   </form>
+  <div>
+    <?php if (isset($_SESSION["viga"]) && $_SESSION["teade"] == 1):?>
+        <div style="color:red;"><?php echo htmlspecialchars($_SESSION["viga"]); ?></div>
+        <?php $_SESSION["teade"] = 0;?>
+    <?php endif;?>
+  </div>
 </div>

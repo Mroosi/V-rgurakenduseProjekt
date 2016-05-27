@@ -5,10 +5,12 @@
     //peale POST pärinugu toimumist valitakse kas tegu oli sisselogimise või registreerimise POSTiga
     //või teksti sisestamises POSTiga.
         if( !empty($_POST)){
-            if((!empty($_POST["username"])) || (!empty($_POST["regusername"]))){
+            if((isset($_POST["username"])) || (isset($_POST["regusername"]))){
                 require('logi.php');
+            }else{
+          
             }
-            if(isset($_POST["sisendtext"])){
+            if((isset($_POST["sisendtext"])) || (isset($_POST["chattext"])) || (isset($_POST["kasutajad"])) || (isset($_POST["puhasta"]))){
                 require('minu.php');
             }
      //Get päring suunab õigelel lehele, kui GET on tühi siis saab vaikimisi väärtuseks "pealeht".

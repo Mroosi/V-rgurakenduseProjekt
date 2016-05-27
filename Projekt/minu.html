@@ -1,7 +1,7 @@
 <div>
   <div id="text">
     <form action="?page=minu" method="POST">
-      <p>Sisesta oma tekst siia...<p><br>
+      <p>Sisesta oma tekst siia...</p><br>
         <textarea name="sisendtext" placeholder="Sisesta oma tekst siia..." id="sisendtext"></textarea>
       <input type="submit" value="Saada"/>
     </form>
@@ -14,8 +14,65 @@
   <?php $tekst = $_SESSION["vastus"];?>
   <?php $pikkus= count($tekst);?>
   <?php for($i=0; $i <$pikkus ; $i++):?>
-    <div style="color:red;"><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></div><br/>
+    <div id="vastused"style="color:red;"><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></div><br/>
     <?php endfor;?>
   <?php endif;?>
+  </div>
+  <div id="chat">
+    <form action="?page=minu" method="POST">
+      <div>
+      <label for="adr-id">Adressaat</label>
+      <input type="text" name="adressaat" id="adr-id"placeholder="Adressaadi kasutajanimi" size="20"/>
+      </div>
+      <div>
+      <p>Sisesta oma tekst siia...<p><br>
+        <textarea name="chattext" placeholder="Sisesta oma tekst siia..." id="sisendtext"></textarea>
+      <input type="submit" value="Saada"/>
+      </div>
+    </form>
+    <?php
+    //postituse andmete kontroll ja saatmine.
+      chat();
+    ?>
+  </div>
+  <?php
+  //Kasutajate, kellega oli kirjavahetus, kuvamine.
+  teated();
+  ?>
+  <form action="?page=minu" method="POST">
+    <div>
+      <p>Kirjavahetus kasutajatega</p>
+      <select name="kasutajad">
+              <?php if (isset($_SESSION["kasutajalist"])):?>
+              <?php $p= $_SESSION["kasutajalist"]; $pikkus= count($p)?>
+              <?php foreach($_SESSION["kasutajalist"] as $_SESSION["kasutajalist"]):?>
+              <option value="<?php print_r($_SESSION["kasutajalist"]);?>"><?php print_r($_SESSION["kasutajalist"]);?></option>
+            <?php endforeach;?>
+          <?php endif;?>
+       </select>
+      <input type="submit" value="Vaata"/>
+    </div>
+  </form>
+  <?php
+  //postituste kuvamine.
+  kuvapostitusi();
+  ?>
+  <?php if(isset($_SESSION["postitused"])):?>
+    <?php $tekst = $_SESSION["postitused"];?>
+    <?php $pikkus= count($tekst);?>
+    <?php for($i=0; $i <$pikkus ; $i++):?>
+      <div id="vastused"style="color:red;"><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></div><br/>
+      <?php endfor;?>
+    <?php endif;?>
+    <form action="?page=minu" method="POST">
+
+    <input type="submit" name="puhasta" value="Puhasta vaade"/>
+      </div>
+    </form>
+    <div>
+      <?php if (isset($_SESSION["viga"]) && $_SESSION["teade"] == 1):?>
+          <div style="color:red;"><?php echo htmlspecialchars($_SESSION["viga"]); ?></div>
+          <?php $_SESSION["teade"] = 0;?>
+      <?php endif;?>
   </div>
 </div>

@@ -1,5 +1,5 @@
 ﻿<?php
-    
+    $_SESSION["teade"] = 0;
     function connect_db(){
 	global $connection;
 	$host="localhost";
@@ -32,27 +32,33 @@ if((!empty($_POST)) && (isset($_POST["regpassword"] ))){
             $paring = "SELECT Nimi FROM Mroosi_2 WHERE Kasutajanimi = '$kasutaja' AND Parool = SHA1('$parool') ";
             $kyss = mysqli_query($connection, $paring);
             $rida = mysqli_num_rows($kyss);
-            
+            mysqli_close($connection);
             for ($i=0; $i <$rida ; $i++) { 
               $_SESSION["nimi"] = mysqli_fetch_assoc($kyss);
             }
-            
             if($rida>0){
                 $_SESSION["kasutajanimi"] = array($kasutaja);
                 header('Location: http://enos.itcollege.ee/~mroosi/Projekt/main.php?page=minu');
               }else{
-                    $viga= "Vale kasutajanimi või parool!";
-                    echo $viga;
+                    $_SESSION["viga"] = "Vale kasutajanimi või parool!";
+                    $_SESSION["teade"] = 1;
                 }
             }
+            else{
+            $_SESSION["viga"] = "Kõik väljad peavad olema täidetud!";
+            $_SESSION["teade"] = 1;
+            header("Location: http://enos.itcollege.ee/~mroosi/Projekt/main.php?page=logi");
         }
+         
+        } 
         }
 
     function reg(){
         //Siin saab kasutaja ennast registreerida ja kontrollitakse, et kasutajanimi poleks võetud.
+     if(!empty($_POST)){
      if((!$_POST["regpassword"] == "" ) && (!$_POST["regusername"] == "" ) && 
      (!$_POST["name"] == "" ) &&  (!$_POST["regpassword2"] == "" )){
-         
+            $_SESSION["viga"] = "Kõik väljad peavad olema täidetud!";
             connect_db();
             global $connection;
             $rk = htmlspecialchars($_POST["regusername"]);
@@ -75,6 +81,7 @@ if((!empty($_POST)) && (isset($_POST["regpassword"] ))){
             $lisaKasutaja = "INSERT INTO Mroosi_2 (`Kasutajanimi`, `Nimi`, `Email`, `Parool`) VALUES ('$regkasutaja','$nimi', '$email', SHA1('$regparool'))";
             $lisamine = mysqli_query($connection, $lisaKasutaja);       
             $_SESSION["kontroll"] = mysqli_affected_rows($connection);
+             mysqli_close($connection);
             if($_SESSION["kontroll"] >0 ){              
                 $_SESSION["kasutaja"] = 1;
                 $_SESSION["nimi"] = array($nimi);
@@ -82,22 +89,24 @@ if((!empty($_POST)) && (isset($_POST["regpassword"] ))){
                  header('Location: http://enos.itcollege.ee/~mroosi/Projekt/main.php?page=minu');
             }
             }else{
-                 $viga = "Paroolid ei klapi!";
-                echo $viga;
+                 $_SESSION["viga"] = "Paroolid ei klapi!";
+                 $_SESSION["teade"] = 1;
             }
                
            }else{
-                $viga = "Selline kasutaja on juba olemas, vali midagi muud!";
-                echo $viga;
+                $_SESSION["viga"] = "Selline kasutaja on juba olemas, vali midagi muud!";
+                $_SESSION["teade"] = 1;
            }
   
         }else{
-            $viga= "Kõik väljad peavad olema täidetud!";
-            echo $viga;
+            $_SESSION["viga"] = "Kõik väljad peavad olema täidetud!";
+            $_SESSION["teade"] = 1;
         }
-
-    }
-    
+        
+    }else{
+            header("Location: http://enos.itcollege.ee/~mroosi/Projekt/main.php?page=logi");
+        }
+    }   
 
 require_once('logi.html');
 ?>
