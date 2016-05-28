@@ -14,7 +14,7 @@
   <?php $tekst = $_SESSION["vastus"];?>
   <?php $pikkus= count($tekst);?>
   <?php for($i=0; $i <$pikkus ; $i++):?>
-    <div id="vastused"style="color:red;"><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></div><br/>
+    <div id="vastused"><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></div><br/>
     <?php endfor;?>
   <?php endif;?>
   </div>
@@ -61,7 +61,7 @@
     <?php $tekst = $_SESSION["postitused"];?>
     <?php $pikkus= count($tekst);?>
     <?php for($i=0; $i <$pikkus ; $i++):?>
-      <div id="vastused"style="color:red;"><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></div><br/>
+      <div id="vastused"><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></div><br/>
       <?php endfor;?>
     <?php endif;?>
     <form action="?page=minu" method="POST">
@@ -71,7 +71,7 @@
     </form>
     <div>
       <?php if (isset($_SESSION["viga"]) && $_SESSION["teade"] == 1):?>
-          <div style="color:red;"><?php echo htmlspecialchars($_SESSION["viga"]); ?></div>
+          <div><?php echo htmlspecialchars($_SESSION["viga"]); ?></div>
           <?php $_SESSION["teade"] = 0;?>
       <?php endif;?>
   </div>
