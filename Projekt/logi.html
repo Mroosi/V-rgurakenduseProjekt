@@ -1,6 +1,20 @@
+<input type="hidden" name="regLog" id="6" value="<?php if(isset($_POST)){
+  if((isset($_POST["regusername"])) || (isset($_POST["regpassword"])) || (isset($_POST["regpassword2"])) || (isset($_POST["name"])) )
+  {echo "1";}else{echo"0";}}?>">
+  <div class="viga">
+    <?php if (isset($_SESSION["viga"]) && $_SESSION["teade"] == 1):?>
+      <div id="err"><?php echo htmlspecialchars($_SESSION["viga"]); ?></div>
+      <?php $_SESSION["teade"] = 0;?>
+    <?php endif;?>
+  </div>
+<div id="nupp">
+</div>
 <ul id="vorm">
   <div>
-  <span id="log">Logi sisse</span>
+  <ul id="logReg">
+    <li><span id="log">Logi sisse</span></li>
+    <li><span id="reg">Registreeru</span></li>
+  </ul>
   <form method="post" action="main.php">
     <ul id="logboxx">
         <li id="logbox">
@@ -22,9 +36,8 @@
   </form>
 </div>
 <div>
-  <span id="reg">Registreeru</span>
       <form method="post" action="main.php">
-      <ul id="regbox">
+      <ul id="regbox" >
           <li id="logbox">
             <label for="reguser-id">Kasutajanimi</label>
           </li>
@@ -65,11 +78,5 @@
           </li>
     </ul>
   </form>
-  <div>
-    <?php if (isset($_SESSION["viga"]) && $_SESSION["teade"] == 1):?>
-        <div><?php echo htmlspecialchars($_SESSION["viga"]); ?></div>
-        <?php $_SESSION["teade"] = 0;?>
-    <?php endif;?>
-  </div>
   </div>
 </ul>

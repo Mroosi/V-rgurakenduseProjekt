@@ -8,17 +8,17 @@
     <title>Projekt</title>
   </head>
   <body>
- 	<div id="header">
+ 	<div class="cont">
 <!--Kui kasutaja on juba sisse loginud-->
          <?php if (isset($_SESSION["nimi"])):?>
            <?php if (!$_SESSION["nimi"] == ""):?>
-           <div id="minu" class="link">
-             <a href="?page=minu">Minu Leht</a></div>
            <div id="exit" class="link">
              <a href="?page=exit">Logi Välja</a>
            </div>
            <?php endif;?>
    			<?php endif;?>
+  </div>
+  <div class="cont">
 <!--Kui kasutaja ei ole veel sees-->
         <?php if ((!isset($_SESSION["nimi"])) || ($_SESSION["nimi"] == "") ):?>
           <div id="pea" class="link">
@@ -28,4 +28,4 @@
             <a href="?page=logi">Logi sisse/registreeri</a>
           </div>
        <?php endif;?>
-    	</div>
+  </div>

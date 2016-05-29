@@ -1,84 +1,118 @@
 ﻿body {
   background: url(servad.jpg);
   background-size:cover;
+  text-align: center;
+}
+.cont{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  list-style-type: none;
+}
+.cont div {
+ flex-grow: 1;
 }
 .link a {
   text-decoration: none;
   font-size: 2em;
   font-family: serif, monospace;
   font-style: italic;
-  color: white;
-}
-#pea a {
-  background-image: url(4.jpg);
-  background-size:120% 110%;
-  background-position: center;
-  padding: 60px;
-  padding-bottom: 65px;
-  position: absolute;
-  top: 60px;
-  left: 300px;
-}
-#minu a {
-  background-image: url(2.jpg);
-  background-size:120% 110%;
-  background-position: center;
-  padding: 60px;
-  padding-bottom: 65px;
-  position: absolute;
-  top: 60px;
-  left: 300px;
-}
-#exit a {
-  background-image: url(4.jpg);
-  background-size:120% 110%;
-  background-position: center;
-  padding: 60px;
-  padding-bottom: 65px;
-  position: absolute;
-  top: 60px;
-  left: 600px;
-}
-
-#logi a {
-  background-image: url(1.jpg);
-  background-size:120% 110%;
-  background-position: center;
-  padding: 60px;
-  padding-bottom: 70px;
-  padding-left: 130px;
-  padding-right: 150px;
-  position: absolute;
-  top: 60px;
-  left: 600px;
+  color: black;
 }
 #sisu {
-  position: absolute;
-  margin: 50px;
-  width: 100px;
-  height: 100px;
+  display: block;
+  text-align: center;
+  position: relative;
   top: 300px;
-  left: 300px;
 }
 #vorm {
-   position: absolute;
-	left: 200px;
-	top: 300px;
+   position: relative;
+   top: 100px;
+   list-style-type: none;
+}
+#nupp {
+    position: relative;
+    text-align: center;
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: row;
     flex-direction: row;
     list-style-type: none;
 }
-#vorm span {
-    padding: 10px; 
-    flex-grow: 1;
-    background-color: red;
-}
+#logReg span{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 3px;
+    }
+#logReg li{
+    margin: 15px;
+    }
+#logReg {
+    margin-bottom: 100px;
+    }
+
 #regbox {
+position: relative;
 display: none;
 list-style-type: none;
 }
 #logboxx {
+position: relative;
 list-style-type: none;
+}
+#logboxx, #logReg {
+position: relative;
+list-style-type: none;
+}
+#exit {
+    text-align: right;
+}
+#exit a{
+    color: whitesmoke;
+    font-size: 1em;
+}
+.foorum{
+    text-align: left;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    list-style-type: none;  
+}
+.foorum li{
+    display: inline;
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 3px;
+}
+.master{
+    text-align: left;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    list-style-type: none;  
+    margin-left: 100px;
+}
+.master li{
+    text-align: left;
+    display: inline;
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 3px;
+}
+#err {
+    margin-top: 10px;
+    align-content:  center;
+    color: red;
+}
+#vastused{
+    font-family: serif, sans-serif, monospace;
+    font-style: italic;
+}
+p {
+    font-family: serif, sans-serif, monospace;
+    font-style: italic;
+    font-size: 2em;
 }
