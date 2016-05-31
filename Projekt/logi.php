@@ -9,6 +9,7 @@ function connect_db(){
     $connection = mysqli_connect($host, $user, $pass, $db) or die("ei saa ühendust - ".mysqli_error());
     mysqli_query($connection, "SET CHARACTER SET UTF8") or die("Ei saanud baasi utf-8-sse - ".mysqli_error($connection));
 }
+
 //Kas on täidetud sisselogimise või registreerimise vorm või kas kasutaja on juba sees
 if(isset($_SESSION["nimi"])){
     header('Location: http://enos.itcollege.ee/~mroosi/Projekt/main.php?page=minu');
@@ -18,20 +19,25 @@ if((!empty($_POST)) && (isset($_POST["regpassword"] ))){
 }else{
     logi();
 }
+
 //Siin toimub sisselogimine ja sisselogimise andmete kontroll
 function logi(){
     if(!empty($_POST)){
         if((!$_POST["password"] == "" ) && (!$_POST["username"] == "" )){
+           
             connect_db();
             global $connection;
             $k = htmlspecialchars($_POST["username"]);
             $p = htmlspecialchars($_POST["password"]);
+            
             $kasutaja = mysqli_real_escape_string($connection, $k);
             $parool = mysqli_real_escape_string($connection, $p);
+            
             $paring = "SELECT Nimi FROM Mroosi_2 WHERE Kasutajanimi = '$kasutaja' AND Parool = SHA1('$parool') ";
             $kyss = mysqli_query($connection, $paring);
             $rida = mysqli_num_rows($kyss);
             mysqli_close($connection);
+            
             for ($i=0; $i <$rida ; $i++) {
                 $_SESSION["nimi"] = mysqli_fetch_assoc($kyss);
             }
@@ -50,6 +56,7 @@ function logi(){
 
     }
 }
+
 //Siin saab kasutaja ennast registreerida ja kontrollitakse, et kasutajanimi poleks võetud.
 function reg(){
     if(!empty($_POST)){
@@ -65,7 +72,6 @@ function reg(){
                 $rp2 = htmlspecialchars($_POST["regpassword2"]);
                 $n = htmlspecialchars($_POST["name"]);
                 $re = htmlspecialchars($_POST["email"]);
-                
                 
                 $regkasutaja = mysqli_real_escape_string($connection, $rk);
                 $regparool = mysqli_real_escape_string($connection, $rp);

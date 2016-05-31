@@ -2,6 +2,7 @@
 if (!isset($_SESSION)) session_start();
     $_SESSION["kasutaja"] = 0;
     require_once('vaated/header.html');
+    
 //peale POST pärinugu toimumist valitakse kas tegu oli sisselogimise või registreerimise POSTiga
 //või teksti sisestamises POSTiga.
 if( !empty($_POST)){

@@ -9,11 +9,13 @@
     kuva.addEventListener('click', function(event) {
         list.style.display = 'block';
         rlist.style.display = 'none';
+       
     });
     
     rkuva.addEventListener('click', function(event) {
         rlist.style.display = 'block';
         list.style.display = 'none';
+       
     });
     
     /*kui registreerumisel on mingi jama siis kuvab registreerumise vormi uuesti tagasi*/

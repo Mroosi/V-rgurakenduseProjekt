@@ -1,179 +1,91 @@
 <!--Veateate kuvamine-->
 <div class="viga">
+
   <?php if (isset($_SESSION["viga"]) && $_SESSION["teade"] == 1):?>
-  
     <div id="err"><?php echo htmlspecialchars($_SESSION["viga"]); ?></div>
-    
     <?php $_SESSION["teade"] = 0;?>
   <?php endif;?>
-  </div>
-  
-<div class="container">
-    <div>
-        <h3>Foorumi postitused</h3>
-        <ul class="vasakul">
-            <?php
-            foorum();
-            ?>
-            <?php if(isset($_SESSION["vastus"])):?>
-              <?php $tekst = $_SESSION["vastus"];?>
-              <?php $pikkus= count($tekst);?>
-                <?php for($i=0; $i <$pikkus ; $i++):?>
-                  <li>
-                      <span class="kasutaja"><?php echo $tekst[$i]["Kasutajanimi"];?></span> 
-                      <span class="tekst"><?php echo $tekst[$i]["Sisendtext"];?></span>
-                  </li>
-                <?php endfor;?>
-              <?php endif;?>
-        </ul>
-        
-        <form class="saada" action="?page=minu" method="POST">
-            <!--<p>Siin saad oma postitust saata</p><br>-->
-            <textarea name="sisendtext" placeholder="Sisesta oma tekst siia..." id="sisendtext"></textarea>
-            <input type="submit" value="Saada"/>    
-        </form>
-    </div>
-    <div>
-        <h3>Saada kasutajale teade</h3>
-        <form action="?page=minu" method="POST">
-            <div><label for="adr-id">Adressaat</label></div>
-            <div id="adr">
-                <input class="paremal" type="text" name="adressaat" id="adr-id" placeholder="Adressaadi kasutajanimi" size="20"/>
-            </div>
-            <div>
-                <textarea class="paremal" name="chattext" placeholder="Sisesta oma tekst siia..." id="sisendtext"></textarea>
-            </div>
-            <div><input type="submit" value="Saada"/></div>
-        </form>
-        <?php
-        //postituse andmete kontroll ja saatmine.
-        chat();
-        ?>
-          
-        <?php
-        //Kasutajate, kellega oli kirjavahetus, kuvamine.
-        teated();
-        ?>
-        <h3>Kirjavahetus kasutajatega</h3>
-        <form action="?page=minu" method="POST">
-            <select name="kasutajad" id="select">
-            <?php if (isset($_SESSION[ "kasutajalist" ])):?>
-                <?php $p= $_SESSION[ "kasutajalist" ]; $pikkus= count($p)?>
-                <?php foreach($_SESSION[ "kasutajalist" ] as $_SESSION[ "kasutajalist" ]):?>
-                <option value="<?php print_r($_SESSION[ "kasutajalist" ]);?>"><?php print_r($_SESSION[ "kasutajalist" ]);?></option>
-                <?php endforeach;?>
-            <?php endif;?>
-            </select>
-            <input type="submit" value="Vaata"/>
-        </form>
-        
-               
-        <ul class="paremal">
-            <?php
-            //postituste kuvamine.
-            kuvapostitusi();
-            ?>
-            <?php if(isset($_SESSION["postitused"])):?>
-            <?php $tekst = $_SESSION["postitused"];?>
-            <?php $pikkus= count($tekst);?>
-            <?php for($i=0; $i <$pikkus ; $i++):?>
-            <li><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></li>
-            <?php endfor;?>
-            <?php endif;?>
-        </ul>
-        
-        <form action="?page=minu" method="POST">
-            <input type="submit" name="puhasta" value="Puhasta vaade"/>
-        </form>
-          
-    </div>
 </div>
-  
-<!--<ul class="master">
-    
 
-  <li>
-    <ul class="foorum">
-      <li>
-        <P>Foorumi postitused</p><br>
-          <div class="frame">
-            <?php
-            foorum();
-            ?>
-            <?php if(isset($_SESSION["vastus"])):?>
-              <?php $tekst = $_SESSION["vastus"];?>
-              <?php $pikkus= count($tekst);?>
-                <?php for($i=0; $i <$pikkus ; $i++):?>
-                  <div id="vastused"><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></div><br/>
-                <?php endfor;?>
-              <?php endif;?>
-          </div>
-        </li>
-        
-        <li>
-          <form action="?page=minu" method="POST">
-            <p>Siin saad oma postitust saata</p><br>
-            <textarea name="sisendtext" placeholder="Sisesta oma tekst siia..." id="sisendtext"></textarea>
-            <input type="submit" value="Saada"/>
-          </form>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <ul class="foorum">
-        <li>
-          <P>Saada kasutajale teade</p><br>
-          <form action="?page=minu" method="POST">
-            <div><label for="adr-id">Adressaat</label></div>
-            <div id="adr"><input type="text" name="adressaat" id="adr-id" placeholder="Adressaadi kasutajanimi" size="20"/></div>
-            <div><textarea name="chattext" placeholder="Sisesta oma tekst siia..." id="sisendtext"></textarea></div>
-            <div><input type="submit" value="Saada"/></div>
-          </form>
-          <?php
-            //postituse andmete kontroll ja saatmine.
-            chat();
-          ?>
-        </li>
+<div class="container">
+  <div>
+    <h3>Foorumi postitused</h3>
+    <ul class="vasakul">
+      <?php
+        foorum();
+      ?>
 
-        <li>
-          <?php
-            //Kasutajate, kellega oli kirjavahetus, kuvamine.
-            teated();
-          ?>
-          <form action="?page=minu" method="POST">
-            <div>
-              <p>Kirjavahetus kasutajatega</p>
-              <select name="kasutajad" id="select">
-                <?php if (isset($_SESSION[ "kasutajalist" ])):?>
-                  <?php $p= $_SESSION[ "kasutajalist" ]; $pikkus= count($p)?>
-                  <?php foreach($_SESSION[ "kasutajalist" ] as $_SESSION[ "kasutajalist" ]):?>
-                    <option value="<?php print_r($_SESSION[ "kasutajalist" ]);?>"><?php print_r($_SESSION[ "kasutajalist" ]);?></option>
-                  <?php endforeach;?>
-                <?php endif;?>
-              </select>
-              <input type="submit" value="Vaata"/>
-            </div>
-            
-          </form>
-            <div class="frame">
-              <?php
-                //postituste kuvamine.
-                kuvapostitusi();
-              ?>
-              <?php if(isset($_SESSION["postitused"])):?>
-                <?php $tekst = $_SESSION["postitused"];?>
-                <?php $pikkus= count($tekst);?>
-                <?php for($i=0; $i <$pikkus ; $i++):?>
-                  <div id="vastused"><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></div><br/>
-                <?php endfor;?>
-              <?php endif;?>
-            </div>
-          <form action="?page=minu" method="POST">
-            <input type="submit" name="puhasta" value="Puhasta vaade"/>
-          </form>
-          
-        </li>
-      </ul>
-    </li>
-  </ul>
--->
+      <?php if(isset($_SESSION["vastus"])):?>
+        <?php $tekst = $_SESSION["vastus"];?>
+        <?php $pikkus= count($tekst);?>
+        <?php for($i=0; $i <$pikkus ; $i++):?>
+          <li>
+            <span class="kasutaja"><?php echo $tekst[$i]["Kasutajanimi"];?></span>
+            <span class="tekst"><?php echo $tekst[$i]["Sisendtext"];?></span>
+          </li>
+        <?php endfor;?>
+      <?php endif;?>
+    </ul>
+
+    <form class="saada" action="?page=minu" method="POST">
+      <!--<p>Siin saad oma postitust saata</p><br>-->
+      <textarea name="sisendtext" placeholder="Sisesta oma tekst siia..." id="sisendtext"></textarea>
+      <input type="submit" value="Saada"/>
+    </form>
+</div>
+
+<div>
+  <h3>Saada kasutajale teade</h3>
+  <form action="?page=minu" method="POST">
+    <div><label for="adr-id">Adressaat</label></div>
+    <div id="adr">
+      <input class="paremal" type="text" name="adressaat" id="adr-id" placeholder="Adressaadi kasutajanimi" size="20"/>
+    </div>
+    <div>
+      <textarea class="paremal" name="chattext" placeholder="Sisesta oma tekst siia..." id="sisendtext"></textarea>
+    </div>
+    <div><input type="submit" value="Saada"/></div>
+  </form>
+
+  <?php
+    //postituse andmete kontroll ja saatmine.
+    chat();
+  ?>
+
+  <?php
+    //Kasutajate, kellega oli kirjavahetus, kuvamine.
+    teated();
+  ?>
+  <h3>Kirjavahetus kasutajatega</h3>
+  <form action="?page=minu" method="POST">
+    <select name="kasutajad" id="select">
+      <?php if (isset($_SESSION[ "kasutajalist" ])):?>
+        <?php $p= $_SESSION[ "kasutajalist" ]; $pikkus= count($p)?>
+        <?php foreach($_SESSION[ "kasutajalist" ] as $_SESSION[ "kasutajalist" ]):?>
+          <option value="<?php print_r($_SESSION[ "kasutajalist" ]);?>"><?php print_r($_SESSION[ "kasutajalist" ]);?></option>
+        <?php endforeach;?>
+      <?php endif;?>
+    </select>
+    <input type="submit" value="Vaata"/>
+  </form>
+
+<ul class="paremal">
+  <?php
+    //postituste kuvamine.
+    kuvapostitusi();
+  ?>
+  <?php if(isset($_SESSION["postitused"])):?>
+    <?php $tekst = $_SESSION["postitused"];?>
+    <?php $pikkus= count($tekst);?>
+    <?php for($i=0; $i <$pikkus ; $i++):?>
+      <li><?php echo $tekst[$i]["Kasutajanimi"];?>- <?php echo $tekst[$i]["Sisendtext"];?></li>
+    <?php endfor;?>
+  <?php endif;?>
+</ul>
+
+<form action="?page=minu" method="POST">
+  <input type="submit" name="puhasta" value="Puhasta vaade"/>
+</form>
+
+</div>
+</div>

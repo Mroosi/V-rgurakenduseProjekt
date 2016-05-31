@@ -1,5 +1,4 @@
 ﻿
-
 body {
     font-family: 'Open Sans', sans-serif;
     background: url(../pildid/servad.jpg);
@@ -29,15 +28,11 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-    top: 100px;
+    top: 10px;
     list-style-type: none;
 }
 
-#vorm ul, {
-    margin: 0;
-    padding: 0;
-}
-#logReg{
+#vorm ul, #logReg {
     margin: 0;
     padding: 0;
 }
@@ -49,13 +44,12 @@ body {
     list-style-type: none;
 }
 
-#regbox{
+#regbox {
     display: none;
 }
 
 
-#regbox li, 
-#logbox li{
+#regbox li, #logbox li{
     margin: 10px 0;
 }
 
@@ -68,7 +62,6 @@ body {
     cursor: pointer;
     display: inline-block;
 }
-
 
 .container{
     width: 720px;
@@ -143,7 +136,6 @@ textarea.paremal{
     position: absolute;
     width: 49px;
     height: 42px;
-
 }
 
 #err {
@@ -151,66 +143,6 @@ textarea.paremal{
     align-content:  center;
     color: red;
 }
-
-/*
-#nupp {
-    position: relative;
-    text-align: center;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    list-style-type: none;
-}
-
-
-
-#logbox, #logReg {
-    position: relative;
-    list-style-type: none;
-}
-#exit {
-    text-align: right;
-}
-#exit a{
-    color: whitesmoke;
-    font-size: 1em;
-}
-.foorum{
-    text-align: left;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    list-style-type: none;
-}
-.foorum li{
-    display: inline;
-    flex-grow: 1;
-    border-radius: 10px;
-    padding: 3px;
-}
-.master{
-    text-align: left;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    list-style-type: none;
-    margin-left: 100px;
-}
-.master li{
-    text-align: left;
-    display: inline;
-    flex-grow: 1;
-    border-radius: 10px;
-    padding: 3px;
-}
-
-#vastused{
-    font-style: italic;
-}*/
-
 
 #sisu{
     font-size: 17px;
@@ -220,4 +152,20 @@ textarea.paremal{
 #sisu div{
     width: 600px;
     margin: auto;
+}
+.logRegNupp {
+    padding-bottom: 90px;
+}
+#teavitus {
+    margin: 10px;
+}
+#exit{
+    text-align: right;
+}
+#exit a{
+    font-size: 1em;
+    color: white;
+    padding: 3px;
+    border: 1px solid white;
+    border-radius: 5px;
 }

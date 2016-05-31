@@ -1,7 +1,7 @@
 <input type="hidden" name="regLog" id="6" value="<?php if(isset($_POST)){
   if((isset($_POST["regusername"])) || (isset($_POST["regpassword"])) || (isset($_POST["regpassword2"])) || (isset($_POST["name"])) )
-  {echo "1";}else{echo"0";}}?>">
-  
+    {echo "1";}else{echo"0";}}?>">
+
 <div class="viga">
   <?php if (isset($_SESSION["viga"]) && $_SESSION["teade"] == 1):?>
     <div id="err"><?php echo htmlspecialchars($_SESSION["viga"]); ?></div>
@@ -9,16 +9,19 @@
   <?php endif;?>
 </div>
 
-  <ul id="vorm">
-    <li>
-      <ul id="logReg">
-        <li><span id="log">Logi sisse</span></li>
-        <li><span id="reg">Registreeru</span></li>
-      </ul>
-    </li>
-    
-    <li>
-      <form method="post" action="main.php">
+<ul id="vorm">
+  <li id="teavitus">
+    <p>Kui oled juba registreerunud siis logi sisse, kui sul kontot pole siis registreeri</p>
+  </li>
+  <li class="logRegNupp">
+    <div id="logReg">
+      <span id="log">Logi sisse</span>
+      <span id="reg">Registreeru</span>
+    </div>
+  </li>
+
+  <li>
+    <form method="post" action="main.php">
       <ul id="logbox">
         <li><label for="username-id">Kasutajanimi</label></li>
         <li><input type="text" name="username" id="username-id" placeholder="Kasutajanimi" size="20"></li>
@@ -26,11 +29,11 @@
         <li><input type="password" name="password" id="password-id" placeholder="Parool" size="20"></li>
         <li><button type="submit">Logi sisse</button></li>
       </ul>
-      </form>
-    </li>
-    
-    <li>
-      <form method="post" action="main.php">
+    </form>
+  </li>
+
+  <li>
+    <form method="post" action="main.php">
       <ul id="regbox" >
         <li><label for="reguser-id">Kasutajanimi</label></li>
         <li><input type="text" name="regusername" id="reguser-id" placeholder="Kasutajanimi"
@@ -54,7 +57,7 @@
         </li>
         <li><button type="submit">Registreeri</button></li>
       </ul>
-      </form>
-    </li>
-    
+    </form>
+  </li>
+
 </ul>

@@ -66,6 +66,7 @@ function foorum(){
         $_SESSION["teade"] = 1;
     }
 }
+
 //see funktsioon võimaldab kindlale kasutajale teadet saata.
 function chat(){
     if((isset($_POST["chattext"])) && (isset($_POST["adressaat"]))){
