@@ -1,0 +1,60 @@
+<input type="hidden" name="regLog" id="6" value="<?php if(isset($_POST)){
+  if((isset($_POST["regusername"])) || (isset($_POST["regpassword"])) || (isset($_POST["regpassword2"])) || (isset($_POST["name"])) )
+  {echo "1";}else{echo"0";}}?>">
+  
+<div class="viga">
+  <?php if (isset($_SESSION["viga"]) && $_SESSION["teade"] == 1):?>
+    <div id="err"><?php echo htmlspecialchars($_SESSION["viga"]); ?></div>
+    <?php $_SESSION["teade"] = 0;?>
+  <?php endif;?>
+</div>
+
+  <ul id="vorm">
+    <li>
+      <ul id="logReg">
+        <li><span id="log">Logi sisse</span></li>
+        <li><span id="reg">Registreeru</span></li>
+      </ul>
+    </li>
+    
+    <li>
+      <form method="post" action="main.php">
+      <ul id="logbox">
+        <li><label for="username-id">Kasutajanimi</label></li>
+        <li><input type="text" name="username" id="username-id" placeholder="Kasutajanimi" size="20"></li>
+        <li><label for="password-id">Parool</label></li>
+        <li><input type="password" name="password" id="password-id" placeholder="Parool" size="20"></li>
+        <li><button type="submit">Logi sisse</button></li>
+      </ul>
+      </form>
+    </li>
+    
+    <li>
+      <form method="post" action="main.php">
+      <ul id="regbox" >
+        <li><label for="reguser-id">Kasutajanimi</label></li>
+        <li><input type="text" name="regusername" id="reguser-id" placeholder="Kasutajanimi"
+            size="20" value = "<?php if(isset($_POST["regusername"])){echo htmlspecialchars($_POST["regusername"]);}?>">
+        </li>
+        <li><label for="name-id">Nimi</label></li>
+        <li><input type="text" name="name" id="name-id" placeholder="Nimi"
+            size="20" value = "<?php if(isset($_POST["name"])){echo htmlspecialchars($_POST["name"]);}?>">
+        </li>
+        <li><label for="email-id">E-mail</label></li>
+        <li><input type="email" name="email" id="email-id" placeholder="MingiMingi@email.com"
+            size="20" value = "<?php if(isset($_POST["email"])){echo htmlspecialchars($_POST["email"]);}?>">
+        </li>
+        <li><label for="regpass-id">Parool</label></li>
+        <li><input type="password" name="regpassword" id="regpass-id" placeholder="Parool"
+            size="20" value = "<?php if(isset($_POST["regpassword"])){echo htmlspecialchars($_POST["regpassword"]);}?>">
+        </li>
+        <li><label for="regpass-id2">Korda parooli</label></li>
+        <li><input type="password" name="regpassword2" id="regpass-id2" placeholder="Parool uuesti"
+            size="20" value = "<?php if(isset($_POST["regpassword2"])){echo htmlspecialchars($_POST["regpassword2"]);}?>">
+        </li>
+        <li><button type="submit">Registreeri</button></li>
+      </ul>
+      </form>
+    </li>
+    
+</ul>

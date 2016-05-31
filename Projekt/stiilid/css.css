@@ -1,0 +1,223 @@
+﻿
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: url(../pildid/servad.jpg);
+    background-size:cover;
+    text-align: center;
+}
+
+.cont{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.cont div {
+    flex-grow: 1;
+}
+
+.link a {
+    text-decoration: none;
+    font-size: 2em;
+    color: black;
+}
+
+#vorm {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 100px;
+    list-style-type: none;
+}
+
+#vorm ul, {
+    margin: 0;
+    padding: 0;
+}
+#logReg{
+    margin: 0;
+    padding: 0;
+}
+
+#regbox, #logbox {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style-type: none;
+}
+
+#regbox{
+    display: none;
+}
+
+
+#regbox li, 
+#logbox li{
+    margin: 10px 0;
+}
+
+#logReg span{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 3px;
+    margin-bottom: 10px;
+    width: 100px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+
+.container{
+    width: 720px;
+    display: flex;
+    margin: auto;
+    padding-top: 40px;
+    justify-content: center;
+}
+
+.container > div{
+    order: 1;
+    text-align: left;
+    padding: 0 50px;
+}
+
+.container ul{
+    margin: 20px 0;
+    padding: 0;
+    min-height: 150px;
+    max-height: 600px;
+    box-shadow: 0 0 5px gray;
+    text-align: left;
+    list-style: none;
+    overflow: auto;
+}
+
+.container ul.vasakul{
+    margin-bottom: 0;
+}
+
+.container ul li{
+    padding: 5px 10px;
+}
+
+.container ul li:nth-child(odd){
+    background-color: lightgray;
+}
+
+.container .vasakul{
+    width: 600px;
+}
+
+.container .paremal{
+    margin: 0;
+    width: 300px;
+}
+
+input.paremal,
+textarea.paremal{
+    padding: 5px 10px;
+}
+
+.container .kasutaja{
+    width: 60px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.saada{
+    padding: 0;
+}
+
+.saada textarea{
+    width: 530px;
+    margin: 0;
+    padding: 5px 10px;
+}
+
+.saada input[type='submit']{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 49px;
+    height: 42px;
+
+}
+
+#err {
+    margin-top: 10px;
+    align-content:  center;
+    color: red;
+}
+
+/*
+#nupp {
+    position: relative;
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+
+
+#logbox, #logReg {
+    position: relative;
+    list-style-type: none;
+}
+#exit {
+    text-align: right;
+}
+#exit a{
+    color: whitesmoke;
+    font-size: 1em;
+}
+.foorum{
+    text-align: left;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    list-style-type: none;
+}
+.foorum li{
+    display: inline;
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 3px;
+}
+.master{
+    text-align: left;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    list-style-type: none;
+    margin-left: 100px;
+}
+.master li{
+    text-align: left;
+    display: inline;
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 3px;
+}
+
+#vastused{
+    font-style: italic;
+}*/
+
+
+#sisu{
+    font-size: 17px;
+    padding-top: 90px;
+}
+
+#sisu div{
+    width: 600px;
+    margin: auto;
+}
