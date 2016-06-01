@@ -71,13 +71,11 @@ function reg(){
                 $rp = htmlspecialchars($_POST["regpassword"]);
                 $rp2 = htmlspecialchars($_POST["regpassword2"]);
                 $n = htmlspecialchars($_POST["name"]);
-                $re = htmlspecialchars($_POST["email"]);
                 
                 $regkasutaja = mysqli_real_escape_string($connection, $rk);
                 $regparool = mysqli_real_escape_string($connection, $rp);
                 $nimi = mysqli_real_escape_string($connection, $n);
                 $regarool2 = mysqli_real_escape_string($connection, $rp2);
-                $email = mysqli_real_escape_string($connection, $re);
                 
                 //kasutaja olemasolu kontroll ja uue kasutaja lisamine
                 $regparing = "SELECT Kasutajanimi FROM Mroosi_2 WHERE Kasutajanimi = '$regkasutaja' ";
@@ -87,8 +85,8 @@ function reg(){
                 if($regrida == 0 ){
                     
                     if($regparool == $regarool2){
-                        $lisaKasutaja = "INSERT INTO Mroosi_2 (`Kasutajanimi`, `Nimi`, `Email`, `Parool`) 
-                            VALUES ('$regkasutaja','$nimi', '$email', SHA1('$regparool'))";
+                        $lisaKasutaja = "INSERT INTO Mroosi_2 (`Kasutajanimi`, `Nimi`, `Parool`) 
+                            VALUES ('$regkasutaja','$nimi', SHA1('$regparool'))";
                         $lisamine = mysqli_query($connection, $lisaKasutaja);
                         
                         //kas kasutaja lisamine õnnestus ja kui õnnestus siis logi sisse 

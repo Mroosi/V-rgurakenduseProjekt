@@ -11,7 +11,7 @@ function connect_db(){
 
 //kasutaja registreerumise teade
 if((isset ($_SESSION["kontroll"])) && ($_SESSION["kontroll"] == 1 )){
-    echo "Kasutaja ". implode($_SESSION["nimi"]). " lisamine õnnestus. ";
+    echo "Kasutaja ". implode($_SESSION["kasutajanimi"]). " lisamine õnnestus. ";
     $_SESSION["kontroll"] = 2;
 }
 
@@ -127,7 +127,7 @@ function teated(){
             $kasut[$i]= ($kasutajalist[$i]['Kasutajanimi']);
         }
     }else{
-        $kasut[0] = "Saadetud teateid pole";
+        $kasut[0] = "Sissetulevaid teateid pole";
     }
     
     //siin võetakse kõik sisselogitud kasutaja poolt saadetud teadete adressaadid ja lisatakse masiivi.
@@ -137,7 +137,7 @@ function teated(){
             $kasut2[$i]= ($kasutajalist2[$i]['Adressaat']);
         }
     }else{
-        $kasut2[0] = "Sissetulevaid teateid pole";
+        $kasut2[0] = "Saadetud teateid pole";
     }
     
 //siin liidetakse massiivid kokku ja eemaldatakse toplelt väärtused

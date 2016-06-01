@@ -1,3 +1,9 @@
+<script type="text/javascript" src="skriptid/js2.js"></script>
+
+<?php
+  //Kindlale kasutajale saadetud postituse andmete kontroll ja saatmine.
+  chat();
+?>
 <!--Veateate kuvamine-->
 <div class="viga">
 
@@ -10,7 +16,7 @@
 <div class="container">
   <div>
     <h3>Foorumi postitused</h3>
-    <ul class="vasakul">
+    <ul class="vasakul" id="kommBox">
       <?php
         foorum();
       ?>
@@ -46,11 +52,6 @@
     </div>
     <div><input type="submit" value="Saada"/></div>
   </form>
-
-  <?php
-    //postituse andmete kontroll ja saatmine.
-    chat();
-  ?>
 
   <?php
     //Kasutajate, kellega oli kirjavahetus, kuvamine.

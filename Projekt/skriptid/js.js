@@ -3,7 +3,7 @@
     var list = document.getElementById('logbox');
     var rkuva = document.getElementById('reg');
     var rlist = document.getElementById('regbox');
-    var lr = document.getElementById('6').value;
+    var regTagasi = document.getElementById('regTagasi');
     
     /*kuvab kas sisselogimise või registreerumise vormi*/
     kuva.addEventListener('click', function(event) {
@@ -19,7 +19,7 @@
     });
     
     /*kui registreerumisel on mingi jama siis kuvab registreerumise vormi uuesti tagasi*/
-    if (lr > 0) {
+    if (regTagasi && regTagasi.value >0) {
         rlist.style.display = 'block';
         list.style.display = 'none';
     }
